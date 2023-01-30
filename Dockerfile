@@ -2,8 +2,7 @@ FROM alpine:3.8 as build
 WORKDIR /app
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
-RUN py -m pip install pandas
-RUN py -m pip install pyarrow
+
 ARG jenkinschiper
 ARG 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
 RUN ls
@@ -15,6 +14,8 @@ RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip install --upgrade google-api-python-client
 RUN pip install google-cloud-bigquery
+RUN pip install pandas
+RUN pip install pyarrow
 COPY . .
 RUN pip --no-cache-dir install PyYAML
 ENV GOOGLE_APPLICATION_CREDENTIALS=./key.json
