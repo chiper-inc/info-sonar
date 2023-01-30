@@ -2,8 +2,8 @@ FROM alpine:3.8 as build
 WORKDIR /app
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
-RUN pip install pandas
-RUN pip install pyarrow
+RUN py -m pip install pandas
+RUN py -m pip install pyarrow
 ARG jenkinschiper
 ARG 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
 RUN ls
